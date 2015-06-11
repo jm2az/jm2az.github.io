@@ -4,19 +4,27 @@
 <title>Stocks</title>
 
 <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
+<script src="js/require/require.min.js" data-main="js/main.js"></script>
+
+<!--
 <script src="js/jquery/jquery.js"></script>
 <script src="js/bootstrap/bootstrap.min.js"></script>
 <script src="js/angular/angular.min.js"></script>
 
 <script src="js/stockTable/stockTable.js"></script>
 <script src="js/stockTable/controllers/stockTableCtrl.js"></script>
+-->
 
 </head>
 
 <body ng-app="stockTable">
 
+<div id="main">
+
 <div ng-controller="stockTableCtrl">
 <span>{{ stock }}</span>
+</div>
+
 </div>
 
 </body>
