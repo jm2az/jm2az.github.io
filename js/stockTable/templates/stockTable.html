@@ -1,0 +1,16 @@
+<div class="table-responsive">
+<table class="table table-hover table-striped">
+	<tr>
+		<th>Ticker</th>
+		<th>Company Name</th>
+		<th>ROI</th>
+		<th>IRR</th>
+	</tr>
+	<tr ng-repeat="stock in stocks">
+			<td>{{stock.ticker}}</td>
+			<td>{{stock.name}}</td>
+			<td>{{stock.roi}}</td>
+			<td>{{stock.irr}}</td>
+	</tr>
+</table>
+</div>
