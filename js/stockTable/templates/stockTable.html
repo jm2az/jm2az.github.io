@@ -3,14 +3,26 @@
 	<tr>
 		<th>Ticker</th>
 		<th>Company Name</th>
-		<th>ROI</th>
-		<th>IRR</th>
+		<th>Return on Investment</th>
+		<th>Internal Rate of Return</th>
+		<th>Current Price</th>
+		<th>1 Year Expected Price</th>
+		<th>Annual Dividends
+		<th>Beta</th>
+		<th>Cost of Equity</th>
+		<th>Net Present Value</th>
 	</tr>
-	<tr ng-repeat="stock in stocks">
-			<td>{{stock.ticker}}</td>
-			<td>{{stock.name}}</td>
-			<td>{{stock.roi}}</td>
-			<td>{{stock.irr}}</td>
+	<tr ng-repeat="stock in stocks | orderBy:sortType:sortReverse">
+		<td>{{stock.ticker}}</td>
+		<td>{{stock.name}}</td>
+		<td>{{stock.roi*100 | number:2}}%</td>
+		<td>{{stock.irr*100 | number:2}}%</td>
+		<td>${{stock.cur_price | number:2}}</td>
+		<td>${{stock.target | number:2}}</td>
+		<td>${{stock.div_cash | number:2}}</td>
+		<td>{{stock.beta | number:2}}</td>
+		<td>{{stock.coe*100 | number:2}}%</td>
+		<td>${{stock.npv | number:2}}</td>
 	</tr>
 </table>
 </div>

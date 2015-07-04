@@ -6,7 +6,8 @@ requirejs.config({
         "bootstrap" : "bootstrap/bootstrap.min",
         "stockTable" : "stockTable/stockTable",
         "stockTableCtrl" : "stockTable/controllers/stockTableCtrl",
-        "stockTableDir" : "stockTable/directives/stockTableDir"
+        "stockTableDir" : "stockTable/directives/stockTableDir",
+        "percentFilter" : "stockTable/filters/percentage"
     },
     shim: {
     	angular: {
