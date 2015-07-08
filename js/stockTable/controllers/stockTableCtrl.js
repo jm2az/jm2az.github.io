@@ -30,6 +30,7 @@ require(["angular", "stockTable"], function(angular, stockTable) {
     	};
  
  		$scope.selectedCls = function(column) {
+ 			console.log(column == $scope.sort.column && 'sort-' + $scope.sort.descending);
         	return column == $scope.sort.column && 'sort-' + $scope.sort.descending;
     	};
     
@@ -46,5 +47,10 @@ require(["angular", "stockTable"], function(angular, stockTable) {
             	}
         	}
     	};
+    	
+    	$scope.textColor = function(number) {
+    		if (parseFloat(number) < 0) {return "negative";}
+    		if (parseFloat(number) > 0) {return "positive";}
+    	}
  	}]);
 });

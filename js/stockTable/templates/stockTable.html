@@ -1,22 +1,22 @@
 <div class="table-responsive">
 <table class="table table-hover table-striped">
 	<tr>
-		<th ng-repeat="column in head">
-			<span ng-repeat="(i,th) in column" ng-class="selectedCls(i)" ng-click="changeSorting(i)">{{ th }}</span>
+		<th ng-repeat="column in head" class="table-header">
+			<span ng-repeat="(i,th) in column" ng-click="changeSorting(i)">{{ th }}</span><span ng-class="selectedCls(i)" class="sort-image"></span>
 		</th>
 		
 	</tr>
 	<tr ng-repeat="stock in body | orderBy:sort.column:sort.descending">
 		<td><a href="{{stock.url}}">{{stock.ticker}}</a></td>
 		<td><a href="{{stock.url}}">{{stock.name}}</a></td>
-		<td>{{stock.roi*100 | number:2}}%</td>
-		<td>{{stock.irr*100 | number:2}}%</td>
+		<td ng-class="textColor(stock.roi)">{{stock.roi*100 | number:2}}%</td>
+		<td ng-class="textColor(stock.irr)">{{stock.irr*100 | number:2}}%</td>
 		<td>${{stock.cur_price | number:2}}</td>
 		<td>${{stock.target | number:2}}</td>
 		<td>${{stock.div_cash | number:2}}</td>
 		<td>{{stock.beta | number:2}}</td>
 		<td>{{stock.coe*100 | number:2}}%</td>
-		<td>${{stock.npv | number:2}}</td>
+		<td ng-class="textColor(stock.roi)">${{stock.npv | number:2}}</td>
 	</tr>
 </table>
 </div>

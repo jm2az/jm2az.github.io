@@ -1,0 +1,20 @@
+.sort-true {
+	background:no-repeat url("img/sort-asc.gif") right center;
+}
+
+.sort-false {
+	background:no-repeat url("img/sort-desc.gif") right center;
+}
+
+.positive {
+  color: green;
+}
+
+.negative {
+  color: red;
+}
+
+.sort-image {
+  height: 20px;
+  width: 20px;
+}
