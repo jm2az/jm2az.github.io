@@ -1,30 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Stocks</title>
+<title>Stock Attractiveness</title>
 
 <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/stocks.css">
 <script src="js/require/require.min.js" data-main="js/main.js"></script>
 
-<!--
-<script src="js/jquery/jquery.js"></script>
-<script src="js/bootstrap/bootstrap.min.js"></script>
-<script src="js/angular/angular.min.js"></script>
-
-<script src="js/stockTable/stockTable.js"></script>
-<script src="js/stockTable/controllers/stockTableCtrl.js"></script>
--->
-
 </head>
 
 <body data-ng-app="stockTable">
 
-<div id="main">
+<div id="navbar-header">
+Find the best stocks out there.
+</div>
 
+<div id="container">
+
+<!--
+<div id="navbar-left">
+	<ul>
+		<li>Documentation</li>
+		<li>About Me</li>
+	</ul>
+</div>
+-->
+
+<div id="main">
 <div data-ng-controller="stockTableCtrl">
 <stock-table-dir></stock-table-dir>
 </div>
+</div>
+
+<!--
+<div id="navbar-right">
+	<ul>
+		<li>Documentation</li>
+		<li>About Me</li>
+	</ul>	
+</div>
+-->
 
 </div>
 

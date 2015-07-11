@@ -1,12 +1,17 @@
-<div class="table-responsive">
-<table class="table table-hover table-striped">
+<div>
+	Search here: <input type="text" ng-model="searchCriteria">
+</div>
+
+<div class="table-responsive" id="stock-table">
+<table class="table table-hover">
+	
 	<tr>
 		<th ng-repeat="column in head" class="table-header">
 			<span ng-repeat="(i,th) in column" ng-click="changeSorting(i)">{{ th }}</span><span ng-class="selectedCls(i)" class="sort-image"></span>
 		</th>
 		
 	</tr>
-	<tr ng-repeat="stock in body | orderBy:sort.column:sort.descending">
+	<tr ng-repeat="stock in body | orderBy:sort.column:sort.descending | filter:searchCriteria">
 		<td><a href="{{stock.url}}">{{stock.ticker}}</a></td>
 		<td><a href="{{stock.url}}">{{stock.name}}</a></td>
 		<td ng-class="textColor(stock.roi)">{{stock.roi*100 | number:2}}%</td>
