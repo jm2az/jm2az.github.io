@@ -1,27 +1,39 @@
 <div>
-	Search here: <input type="text" ng-model="searchCriteria">
+	Search here: <input type="text" ng-model="searchCriteria" ng-change="closeInfo()">
 </div>
 
 <div class="table-responsive" id="stock-table">
 <table class="table table-hover">
-	
+	<thead>
 	<tr>
 		<th ng-repeat="column in head" class="table-header">
 			<span ng-repeat="(i,th) in column" ng-click="changeSorting(i)">{{ th }}</span><span ng-class="selectedCls(i)" class="sort-image"></span>
 		</th>
 		
 	</tr>
-	<tr ng-repeat="stock in body | orderBy:sort.column:sort.descending | filter:searchCriteria">
-		<td><a href="{{stock.url}}">{{stock.ticker}}</a></td>
-		<td><a href="{{stock.url}}">{{stock.name}}</a></td>
-		<td ng-class="textColor(stock.roi)">{{stock.roi*100 | number:2}}%</td>
-		<td ng-class="textColor(stock.irr)">{{stock.irr*100 | number:2}}%</td>
-		<td>${{stock.cur_price | number:2}}</td>
-		<td>${{stock.target | number:2}}</td>
-		<td>${{stock.div_cash | number:2}}</td>
-		<td>{{stock.beta | number:2}}</td>
-		<td>{{stock.coe*100 | number:2}}%</td>
-		<td ng-class="textColor(stock.roi)">${{stock.npv | number:2}}</td>
-	</tr>
+	</thead>
+	<tbody ng-repeat="stock in body | orderBy:sort.column:sort.descending | filter:searchCriteria track by $index">
+		<tr ng-click="toggleRow($index)">
+			<td><a href="{{stock.url}}">{{ stock.ticker }}</a></td>
+			<td><a href="{{stock.url}}">{{ stock.name }}</a></td>
+			<td ng-class="textColor(stock.roi)">{{ formatPercentage(stock.roi) }}</td>
+			<td ng-class="textColor(stock.irr)">{{ formatPercentage(stock.irr) }}</td>
+		</tr>
+		
+		<tr ng-show="showInfo($index)">
+			<td colspan="4"><div>
+				<div class="extra-info-left">
+					Current price: {{ formatDollar(stock.cur_price) }}<br>
+					1 year target price: {{ formatDollar(stock.target) }}<br>
+					Annual dividends: {{ formatDollar(stock.div_cash) }}<br>
+				</div>
+				<div class="extra-info-right">
+					Beta: {{ stock.beta | number:2 }}<br>
+					Cost of equity: {{ formatPercentage(stock.coe) }}<br>
+					Net present value per share: <span ng-class="textColor(stock.npv)">{{ formatDollar(stock.npv) }}</span>
+				</div>
+			</div></td>
+		</tr>
+	</tbody>
 </table>
 </div>

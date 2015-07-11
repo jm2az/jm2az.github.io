@@ -42,6 +42,20 @@ body {
   color: #353839;
 }
 
+.extra-info-left {
+  width: 45%;
+  padding-left: 20px;
+  padding-right: 20px;
+  float: left;
+}
+
+.extra-info-right {
+  width: 45%;
+  padding-left: 20px;
+  padding-right: 20px;
+  float: right;
+}
+
 a {
   color: inherit;
 }
