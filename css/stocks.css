@@ -5,7 +5,7 @@ html {
 body {
   	min-height: 100%;
 	background-color: #353839;
-	color: #FFFFFF;
+	color: #EEEEEE;
 }
 
 .sort-true {
@@ -38,28 +38,8 @@ body {
 }
 
 .table-hover tr:hover td, .table-hover tr:hover th {
-  background-color: #FFFFFF;
+  background-color: #EEEEEE;
   color: #353839;
-  
-  .positive {
-    color: #00C000;
-  }
-
-  .negative {
-    color: #E00000;
-  }
-}
-
-#stock-table {
-  /* color: #111111; */
- 
-  &.nth-child(2) {
-    background-color: blue;
-  }
-  
-  a:link {
-    color: #FFFFFF;
-  }
 }
 
 a {
@@ -77,9 +57,9 @@ input {
   padding-left: 10%;
   vertical-align: middle;
   height: 250px;
-  background: #2352AC; /* #23527C */;
+  background: #2352AC;
   font-size: 300%;
-  color: #FFFFFF; 
+  color: #EEEEEE; 
 }
 
 #navbar-left {
