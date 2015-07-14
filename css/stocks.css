@@ -66,14 +66,51 @@ input {
 
 #navbar-header {
   margin-top: 75px;
-  margin-bottom: 75px;
   padding-top: 100px;
   padding-left: 10%;
   vertical-align: middle;
   height: 250px;
   background: #2352AC;
   font-size: 300%;
-  color: #EEEEEE; 
+  color: #EEEEEE;
+}
+
+.header {
+  background: #2352AC;
+  color: #EEEEEE;
+  margin-bottom: 75px;
+}
+
+#add-stock-btn {
+  color: #2352AC;
+}
+
+#add-stock-div {
+  margin-bottom: 40px;
+}
+
+#selector-div {
+  height: 50px;
+  vertical-align: bottom;
+}
+
+#selector-table {
+  width: 80%;
+  margin: auto;
+}
+
+#selector-table tr td {
+  float: right;
+  text-align: center;
+  font-size: 16px;
+  border: solid;
+  height: 50px;
+  width: 100px;
+  margin-right: 20px;
+}
+
+#selector-table tr td:first-child {
+  margin-right: 0px;
 }
 
 #navbar-left {
