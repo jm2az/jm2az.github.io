@@ -117,8 +117,9 @@ require(["angular", "stockTable"], function(angular, stockTable) {
 						.success(function(data) {
 							$scope.addStockText = ticker + " added to database. Please check again tomorrow.";
 						})
-						.error(function(data) {
+						.error(function(data, status, headers, config) {
 							$scope.addStockText = ticker + " not added to database. Server error.";
+							console.log("Headers: " + headers);
 						});
 						
 					}
