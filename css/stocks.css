@@ -153,10 +153,10 @@ input {
 }
 
 .documentation-text {
-  text-indent: 50px;
+  margin-left: 50px;
 }
 
 .equation {
   font-style: oblique;
-  text-indent: 100px;
+  margin-left: 100px;
 }
