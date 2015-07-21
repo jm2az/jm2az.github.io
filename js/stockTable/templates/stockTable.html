@@ -1,4 +1,4 @@
-<div>
+<div id="stock-table-header">
 	Search here: <input type="text" ng-model="searchCriteria" ng-change="closeInfo()">
 </div>
 
@@ -12,10 +12,10 @@
 		
 	</tr>
 	</thead>
-	<tbody ng-repeat="stock in body | orderBy:sort.column:sort.descending | filter:searchCriteria track by $index">
+	<tbody id="stock-table-body" ng-repeat="stock in body | orderBy:sort.column:sort.descending | filter:searchCriteria track by $index">
 		<tr ng-click="toggleRow($index)">
-			<td><a href="{{stock.url}}">{{ stock.ticker }}</a></td>
-			<td><a href="{{stock.url}}">{{ stock.name }}</a></td>
+			<td><a href="{{stock.url}}" target="_blank">{{ stock.ticker }}</a></td>
+			<td><a href="{{stock.url}}" target="_blank">{{ stock.name }}</a></td>
 			<td ng-class="textColor(stock.roi)">{{ formatPercentage(stock.roi) }}</td>
 			<td ng-class="textColor(stock.irr)">{{ formatPercentage(stock.irr) }}</td>
 		</tr>

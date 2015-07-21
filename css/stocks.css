@@ -78,7 +78,6 @@ input {
 .header {
   background: #2352AC;
   color: #EEEEEE;
-  margin-bottom: 75px;
 }
 
 #add-stock-btn {
@@ -92,25 +91,26 @@ input {
 #selector-div {
   height: 50px;
   vertical-align: bottom;
+  margin-bottom: 75px;
 }
 
 #selector-table {
-  width: 80%;
+  width: 100%;
   margin: auto;
+  background-color: #5b6374;
 }
 
-#selector-table tr td {
-  float: right;
+.selector-button {
+  /* float: right; */
   text-align: center;
   font-size: 16px;
-  border: solid;
+  /* border: solid; */
   height: 50px;
-  width: 100px;
-  margin-right: 20px;
+  width: calc(100% / 3);
 }
 
-#selector-table tr td:first-child {
-  margin-right: 0px;
+.selector-button:hover {
+  background-color: #346cd6;
 }
 
 #navbar-left {
@@ -129,4 +129,34 @@ input {
   height: 100%;
   width: 10%;
   float: right;
+}
+
+#documentation-header {
+  font-size: 250%;
+  font-weight: bold;
+}
+
+/* Font sizes */
+.selector-button, #stock-table-header, .table-header, .documentation-label, #add-stock-header {
+  font-size: 175%;
+}
+
+#stock-table-body, .equation, .documentation-text {
+  font-size: 125%;
+}
+
+.documentation-label {
+  font-size: 175%;
+  font-weight: bold;
+  margin-top: 50px;
+  margin-bottom: 25px;
+}
+
+.documentation-text {
+  text-indent: 50px;
+}
+
+.equation {
+  font-style: oblique;
+  text-indent: 100px;
 }

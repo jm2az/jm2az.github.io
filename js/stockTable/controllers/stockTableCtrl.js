@@ -8,6 +8,29 @@ require(["angular", "stockTable"], function(angular, stockTable) {
 	.controller('stockTableCtrl', ['$scope', '$http', function($scope, $http) {
 		// Initialize variables
 		$scope.tickerAdded = "";
+		$scope.showStocks = true;
+		
+		/**************** Main functions ****************/
+		
+		$scope.toggleView = function(index) {
+			switch (index) {
+				case 1:
+					$scope.showStocks = true;
+					$scope.showAddStocks = false;
+					$scope.showDocumentation = false;
+					break;
+				case 2:
+					$scope.showStocks = false;
+					$scope.showAddStocks = true;
+					$scope.showDocumentation = false;
+					break;
+				case 3:
+					$scope.showStocks = false;
+					$scope.showAddStocks = false;
+					$scope.showDocumentation = true;
+					break;
+			}
+		}
 		
 		/**************** stockTable ****************/
 		$scope.head = [

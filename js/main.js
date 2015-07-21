@@ -8,6 +8,7 @@ requirejs.config({
         "stockTableCtrl" : "stockTable/controllers/stockTableCtrl",
         "stockTableDir" : "stockTable/directives/stockTableDir",
         "addStockDir" : "stockTable/directives/addStockDir",
+        "documentationDir" : "stockTable/directives/documentationDir",
         "percentFilter" : "stockTable/filters/percentage"
     },
     shim: {
@@ -19,6 +20,6 @@ requirejs.config({
 
 
 require(["stockTable"], function(stockTable) {
-	require(["stockTableCtrl", "stockTableDir", "addStockDir"]);
+	require(["stockTableCtrl", "stockTableDir", "addStockDir", "documentationDir"]);
 });
 console.log("Finished");
