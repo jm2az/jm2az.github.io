@@ -2,16 +2,142 @@
 Terms defined
 </div>
 
+<div class="documentation-text">
+	This application analyzes the attractiveness of stocks based on the opinions of industry analysts. It takes a stock's 1 year expected price, calculates a <a href="#coe">discount rate</a> using the stock's <a href="#beta">beta</a> and the <a href"#capm">Capital Asset Pricing Model</a>, and determines an individual share's <a href="#npv">net present value</a>. With this, the application calculates the stock's <a href="#roi">return on investment</a>, which it compares to other stocks. 
+</div>
+
 <div id="documentation-body">
-	<div class="documentation-label">
-		Return on Investment (ROI):
+	<div id="roi" class="documentation-label">
+		Return on Investment (ROI)
 	</div>
 	<div class="documentation-text">
-		Return on Investment is a way to compare stocks of different prices to each other, regardless of price.
+		A normalized way to compare stocks of different prices to each other, regardless of price. This measure takes the expected return and risk of the company into consideration.
 		
 		<div class="equation">
-			ROI = NPV / Stock price
+			ROI = <a href="#npv">NPV</a> / Stock price
 		</div>
+	</div>
+	
+	<div id="irr" class="documentation-label">
+		Internal Rate of Return (IRR)
+	</div>
+	<div class="documentation-text">
+		The effective rate a stock is expected to get. This is the <a href="#coe">discount rate</a> that a stock would need in order to obtain an <a href="npv">NPV</a> of $0. The main difference between IRR and <a href="#roi">ROI</a> is that <a href="#roi">ROI</a> takes risk into account, but IRR does not.
+		
+		<div class="equation">
+			IRR = (1 year target price + dividends) / current price
+		</div>
+	</div>
+	
+	<div id="npv" class="documentation-label">
+		Net Present Value (NPV)
+	</div>
+	<div class="documentation-text">
+		A numerical way to measure the attractiveness of an investment, or in this case, a stock. NPV is a fundamental valuation technique used in finance. NPV measures cash flows, taking the <a href="#tmv">time value of money</a> into account. Here, a simplified, one year model is used to calculate the NPV of each stock.
+	
+		<div class="equation">
+			NPV = (1 year target price + dividends) / (1 + <a href="#coe">COE</a>)
+		</div>
+	</div>
+	
+	<div id="tvm" class="documentation-label">
+		Time Value of Money
+	</div>
+	<div class="documentation-text">
+		The idea that a dollar today is worth more than a dollar 1 year from now.
+	</div>
+	
+	<div id="coe" class="documentation-label">
+		Cost of Equity (COE), or Discount Rate
+	</div>
+	<div class="documentation-text">
+		A numerical measure of risk of a stock. The higher the COE, the higher the risk of the stock. A stock that performs similarly to the market will normally have a COE of between 10% and 12%. COE is calculated using the <a href"#capm">CAPM</a>.
+	</div>
+	
+	<div id="capm" class="documentation-label">
+		Capital Asset Pricing Model (CAPM)
+	</div>
+	<div class="documentation-text">
+		Used to calculate the <a href="#coe">COE</a> of a stock. CAPM uses the risk of the company, as measured by the <a href="#beta">beta</a>, and the <a href="#market-risk-premium">market risk premium</a> to determine a <a href="#coe">discount rate</a> for the stock.
+		
+		<div class="equation">
+			r_i = r_f + beta_i * (r_m - r_f)<br>
+			<br>
+			Where:<br>
+			<table>
+				<tr>
+					<td class="td-label">r_i:</td>
+					<td><a href="#coe">discount rate</a> for the stock</td>
+				</tr>
+				<tr>
+					<td class="td-label">r_f:</td>
+					<td><a href="#risk-free-rate">risk free rate</a></td>
+				</tr>
+				<tr>
+					<td class="td-label">beta_i:</td>
+					<td><a href="#beta">beta</a> for the stock</td>
+				</tr>
+				<tr>
+					<td class="td-label">r_m:</td>
+					<td><a href="#market-rate">expected market return</a></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	
+	<div id="beta" class="documentation-label">
+		Beta
+	</div>
+	<div class="documentation-text">
+		A measure of the riskiness of the stock, relative to the market.
+		
+			<div class="equation">
+			Beta values:<br>
+			<br>
+			<table>
+				<tr>
+					<td class="td-label">Greater than 1:</td>
+					<td>Riskier than the market</td>
+				</tr>
+				<tr>
+					<td class="td-label">Equal to 1:</td>
+					<td>As risky as the market</td>
+				</tr>
+				<tr>
+					<td class="td-label">Between 0 and 1:</td>
+					<td>Less risky than the market, but still generally moves with the market</td>
+				</tr>
+				<tr>
+					<td class="td-label">Equal to 0:</td>
+					<td>Uncorrelated with the market</td>
+				</tr>
+				<tr>
+					<td class="td-label">Less than 0:</td>
+					<td>Generally moves against the market. If the market rises, this stock will generally fall</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	
+	<div id="market-risk-premium" class="documentation-label">
+		Market Risk Premium
+	</div>
+	<div class="documentation-text">
+		An investor will not want to take on extra risk unless they expect a higher rate of return. The market risk premium is the difference between the <a href="market-rate">market's expected return</a> and the <a href="risk-free-rate">risk free rate of return</a>.
+	</div>
+	
+	<div id="risk-free-rate" class="documentation-label">
+		Risk Free Rate
+	</div>
+	<div class="documentation-text">
+		The annualized return on the a riskless asset, usually proxied by the 3 month US Treasury Bill, or the 10 year US Treasury Bond. Here, the <a href="http://money.cnn.com/data/bonds/">3 month Treasury Bill</a> is used as a proxy for the risk free rate.
+	</div>
+	
+	<div id="market-rate" class="documentation-label">
+		Expected Market Return
+	</div>
+	<div class="documentation-text">
+		Proxied by the <a href="http://money.cnn.com/data/markets/sandp/">1 year historical return on the S&P 500</a>. Ideally, one would want their portfolio, and each individual stock, to outperform the market.
 	</div>
 
 </div>
