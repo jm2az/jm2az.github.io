@@ -2,22 +2,41 @@
 	Search here: <input type="text" ng-model="searchCriteria" ng-change="closeInfo()">
 </div>
 
+<div>
+	<input type="checkbox" ng-click="showAdvancedSearch()"/><span class="sector-industry-text">Advanced search</span>
+</div>
+
+<div id="search-industry" ng-show="showSectorIndustrySearch">
+	<div class="search-table">
+		<div class="search-button hover-button vertical-center" ng-click="toggleShowSectors()">
+				Search by Sector
+		</div>
+		<div ng-repeat="sector in sectors" class="sector-industry-div hover-button" ng-show="showSectors"><input type="checkbox" ng-click="includeSector(sector)" checked /><span class="sector-industry-text">{{ sector }}</span></div>
+	</div>
+	<div class="search-table">
+		<div class="search-button hover-button vertical-center" ng-click="toggleShowIndustries()">
+				Search by Industry
+		</div>
+		<div ng-repeat="industry in industries" class="sector-industry-div hover-button" ng-show="showIndustries"><input type="checkbox" ng-click="includeIndustry(industry)" checked /><span class="sector-industry-text">{{ industry }}</span></div>
+	</div>
+</div>
+
 <div class="table-responsive" id="stock-table">
-<table class="table table-hover">
+<table class="table">
 	<thead>
 	<tr>
-		<th ng-repeat="column in head" class="table-header">
+		<th ng-repeat="column in head" class="table-header hover-button">
 			<span ng-repeat="(i,th) in column" ng-click="changeSorting(i)">{{ th }}</span><span ng-class="selectedCls(i)" class="sort-image"></span>
 		</th>
 		
 	</tr>
 	</thead>
-	<tbody id="stock-table-body" ng-repeat="stock in body | orderBy:sort.column:sort.descending | filter:searchCriteria track by $index">
-		<tr ng-click="toggleRow($index)">
+	<tbody id="stock-table-body" ng-repeat="stock in body | orderBy:sort.column:sort.descending | filter:searchCriteria | filter:sectorFilter | filter:industryFilter track by $index">
+		<tr ng-click="toggleRow($index)" class="hover-button">
 			<td><a href="{{stock.url}}" target="_blank">{{ stock.ticker }}</a></td>
 			<td><a href="{{stock.url}}" target="_blank">{{ stock.name }}</a></td>
-			<td ng-class="textColor(stock.roi)">{{ formatPercentage(stock.roi) }}</td>
-			<td ng-class="textColor(stock.irr)">{{ formatPercentage(stock.irr) }}</td>
+			<td class="centered-text" ng-class="textColor(stock.roi)">{{ formatPercentage(stock.roi) }}</td>
+			<td class="centered-text" ng-class="textColor(stock.irr)">{{ formatPercentage(stock.irr) }}</td>
 		</tr>
 		
 		<tr ng-show="showInfo($index)">

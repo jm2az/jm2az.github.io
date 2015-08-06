@@ -24,10 +24,16 @@ body {
   color: #E00000 !important;
 }
 
-.sort-image {
-  height: 20px;
-  width: 20px;
+.centered-text {
+  text-align: center;
 }
+
+/*
+.sort-image {
+  width: 30px;
+  height: 30px;
+}
+*/
 
 .table-hover tr:hover td, .table-hover tr:hover th .positive, .table-hover tr:hover td, .table-hover tr:hover th .positive {
   color: #00C000;
@@ -96,21 +102,55 @@ input {
 
 #selector-table {
   width: 100%;
-  margin: auto;
+  /margin: auto;
   background-color: #5b6374;
 }
 
 .selector-button {
-  /* float: right; */
   text-align: center;
   font-size: 16px;
-  /* border: solid; */
   height: 50px;
   width: calc(100% / 3);
 }
 
-.selector-button:hover {
+.hover-button:hover {
   background-color: #346cd6;
+}
+
+#search-industry {
+  position: absolute;
+  margin-bottom: 75px;
+  width: 60%;
+  margin: auto;
+}
+
+.search-table {
+  width: calc(100% / 2);
+  height: 100%;
+  background-color: #5b6374;
+}
+
+.search-table:first-child {
+  float: left;
+}
+
+.search-table:last-child {
+  float: right;
+}
+
+.search-button {
+  text-align: center;
+  font-size: 16px;
+  height: 40px;
+  width: 100%;
+}
+
+.sector-industry-div {
+  padding-left: 5px;
+}
+
+.sector-industry-text {
+  padding-left: 5px;
 }
 
 #navbar-left {
@@ -137,9 +177,21 @@ input {
   font-weight: bold;
 }
 
+#stock-table {
+  padding-top: 50px;
+}
+
+#stock-table-header {
+  padding-bottom: 20px;
+}
+
 /* Font sizes */
-.selector-button, #stock-table-header, .table-header, .documentation-label, #add-stock-header {
+.selector-button, #stock-table-header, .table-header, .documentation-label, #add-stock-header, .search-button {
   font-size: 175%;
+}
+
+.table-header {
+  text-align: center;
 }
 
 #stock-table-body, .equation, .documentation-text {

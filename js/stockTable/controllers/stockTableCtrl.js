@@ -33,6 +33,10 @@ require(["angular", "stockTable"], function(angular, stockTable) {
 		}
 		
 		/**************** stockTable ****************/
+
+        // Initalize variables
+        $scope.showSectors = false;
+
 		$scope.head = [
         	{ticker: "Ticker"},
         	{name: "Company Name"},
@@ -53,8 +57,42 @@ require(["angular", "stockTable"], function(angular, stockTable) {
 			$scope.body = data._items;
 			console.log("Loaded stocks");
 			console.log($scope.body);
+
+            // Get industry and sector data
+            $scope.sectors = [];
+            $scope.industries = [];
+
+            $scope.body.forEach(function(element) {
+                if (element.sector == undefined) {
+                    element.sector = "Not Specified";
+                }
+                if (element.industry == undefined) {
+                    element.industry = "Not Specified";
+                }
+
+                if ($scope.sectors.indexOf(element.sector) == -1) {
+                    $scope.sectors.push(element.sector);
+                }
+                if ($scope.industries.indexOf(element.industry) == -1) {
+                    $scope.industries.push(element.industry);
+                }
+            });
+            $scope.sectors.sort();
+            $scope.industries.sort();
+
+            // To initialize showing sectors
+            $scope.showSectorsJson = {};
+            $scope.sectors.forEach(function(sector) {
+                $scope.showSectorsJson[sector] = true;
+            });
+
+            // To initialize showing industries
+            $scope.showIndustriesJson = {};
+            $scope.industries.forEach(function(industry) {
+                $scope.showIndustriesJson[industry] = true;
+            });
 		});
-		
+
 		// Sorting column
 		$scope.sort = {
         	column: 'roi',
@@ -70,8 +108,8 @@ require(["angular", "stockTable"], function(angular, stockTable) {
  
  		// Add class for sorted column
  		$scope.selectedCls = function(column) {
- 			console.log(column == $scope.sort.column && 'sort-' + $scope.sort.descending);
-        	return column == $scope.sort.column && 'sort-' + $scope.sort.descending;
+            //console.log($scope.sort.column && 'sort-' + $scope.sort.descending);
+        	return /* column == */ $scope.sort.column && 'sort-' + $scope.sort.descending;
     	};
     
     	// Change order for stock table
@@ -115,6 +153,46 @@ require(["angular", "stockTable"], function(angular, stockTable) {
     	$scope.formatPercentage = function(percent) {
     		return (parseFloat(String(percent).replace("-", ""))*100).toFixed(2) + '%';
     	};
+
+        // Toggle whether to show the list of sectors or not
+        $scope.toggleShowSectors = function() {
+            $scope.showSectors = !$scope.showSectors;
+        };
+
+        // Toggle whether to show the list of industries or not
+        $scope.toggleShowIndustries = function() {
+            $scope.showIndustries = !$scope.showIndustries;
+        };
+
+        // Toggle whether to include the sector in the filter or not
+        $scope.includeSector = function(sector) {
+            $scope.showSectorsJson[sector] = !$scope.showSectorsJson[sector];
+            $scope.closeInfo();
+            console.log($scope.showSectorsJson);
+        };
+
+        // Toggle whether to include the industry in the filter or not
+        $scope.includeIndustry = function(industry) {
+            $scope.showIndustriesJson[industry] = !$scope.showIndustriesJson[industry];
+            $scope.closeInfo();
+            console.log($scope.showIndustriesJson);
+        };
+
+        // Sector filter
+        $scope.sectorFilter = function(stock) {
+            return $scope.showSectorsJson[stock.sector];
+        };
+
+        // Industry filter
+        $scope.industryFilter = function(stock) {
+            return $scope.showIndustriesJson[stock.industry];
+        };
+
+        $scope.showSectorIndustrySearch = false;
+        // Toggle showing advanced search
+        $scope.showAdvancedSearch = function() {
+            $scope.showSectorIndustrySearch = !$scope.showSectorIndustrySearch;
+        };
     	
     	/**************** addStock ****************/
     	// Checks if ticker exists, if it does, reports back, else adds    	
